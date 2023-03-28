@@ -4,15 +4,20 @@ impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut index = vec![];
         for i in 0..nums.len() {
-            for j in i + 1..nums.len() {
-                let a = nums[i];
-                let b = nums[j];
+            let a = &nums[i];
 
-                if a + b == target {
-                    index.push(i as i32);
-                    index.push(j as i32);
-                    break;
-                }
+            let j = if i + 1 >= nums.len() {
+                i
+            } else {
+                i + 1
+            };
+
+            let b = &nums[j];
+
+            if a + b == target {
+                index.push(i as i32);
+                index.push(j as i32);
+                break;
             }
         }
 
