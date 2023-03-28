@@ -1,27 +1,26 @@
+use std::collections::HashMap;
+
 pub struct Solution;
 
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-        let mut index = vec![];
-        for i in 0..nums.len() {
-            let a = &nums[i];
+        let mut pos = vec![];
+        let mut seen: HashMap<i32, usize> = HashMap::new();
 
-            let j = if i + 1 >= nums.len() {
-                i
-            } else {
-                i + 1
-            };
+        for (index, num) in nums.iter().enumerate() {
+            let diff = target - num;
+            if seen.contains_key(&diff) {
+                let some_index = seen.get(&diff).unwrap();
+                pos.push(*some_index as i32);
+                pos.push(index as i32);
 
-            let b = &nums[j];
-
-            if a + b == target {
-                index.push(i as i32);
-                index.push(j as i32);
                 break;
+            } else {
+                seen.insert(*num, index);
             }
         }
 
-        index
+        pos
     }
 }
 
