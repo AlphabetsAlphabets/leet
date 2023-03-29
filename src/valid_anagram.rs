@@ -1,29 +1,38 @@
 use std::collections::HashMap;
 
 pub fn is_anagram(s: String, t: String) -> bool {
-    let mut chars_in_s: HashMap<char, usize> = HashMap::new();
-    for char in s.chars() {
-        chars_in_s
-            .entry(char)
+    if s.len() != t.len() {
+        return false;
+    }
+
+    let mut seen: HashMap<char, usize> = HashMap::new();
+
+    let s_iter = s.chars();
+    let t_iter = t.chars();
+    let s_and_t = s_iter.zip(t_iter);
+
+    for (char_s, char_t) in s_and_t {
+        seen.entry(char_s)
+            .and_modify(|occurance| *occurance += 1)
+            .or_insert(1);
+
+        seen.entry(char_t)
             .and_modify(|occurance| *occurance += 1)
             .or_insert(1);
     }
 
-    let mut chars_in_t: HashMap<char, usize> = HashMap::new();
-    for char in t.chars() {
-        chars_in_t
-            .entry(char)
-            .and_modify(|occurance| *occurance += 1)
-            .or_insert(1);
-    }
-
-    chars_in_s == chars_in_t
+    seen.values().find(|occurance| *occurance % 2 != 0).is_none()
 }
-
 
 #[cfg(test)]
 mod tests {
     use crate::valid_anagram::*;
+
+    #[test]
+    fn differing_lengths() {
+        let res = is_anagram("ababa".to_string(), "c".to_string());
+        assert_eq!(res, false);
+    }
 
     #[test]
     fn anagram() {
