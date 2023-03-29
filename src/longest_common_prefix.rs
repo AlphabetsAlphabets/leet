@@ -1,13 +1,14 @@
 pub fn longest_common_prefix(strings: Vec<String>) -> String {
-    let mut prefix = strings[0].clone();
+    let mut prefix = String::new();
     for string in strings {
-        for (index, char) in string.chars().enumerate() {
-            if prefix.contains(char) {
-                continue;
+        for index in 1..string.chars().count() {
+            let contending_prefix = (&string[0..index]).to_string();
+            prefix.push_str(&contending_prefix);
+
+            if !prefix.starts_with(&contending_prefix) {
+                break;
             }
 
-            prefix = (&string[0..index]).to_string();
-            break;
         }
     }
 
