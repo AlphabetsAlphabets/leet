@@ -1,10 +1,23 @@
 pub fn is_palindrome(s: String) -> bool {
     let s = s.to_lowercase();
+    let stripped: String = s.chars().filter(|c| c.is_alphanumeric()).collect();
 
-    let original: String = s.chars().filter(|c| c.is_alphanumeric()).collect();
-    let reversed: String = original.chars().rev().collect();
+    let mut start = 0;
+    let mut end = stripped.len();
+    let chars: Vec<char> = stripped.chars().collect();
+    while start < end && end != 0 {
+        let front = chars[start];
+        let back = chars[end - 1];
 
-    original == reversed
+        if front != back {
+            return false;
+        }
+
+        start += 1;
+        end -= 1;
+    }
+
+    true
 }
 
 #[cfg(test)]
