@@ -1,7 +1,7 @@
-use solutions::stack::valid_parenthesis::is_valid;
+use solutions::stack::maximum_nest_depth_of_parens::max_depth;
 
 pub fn main() {
-    let parens = "[()]".to_string();
-    let result = is_valid(parens.clone());
-    println!("Is '{}' valid? {}", parens, result);
+    let s = String::from("(1+(2*3)+((8)/4))+1");
+    let depth = max_depth(s);
+    println!("Max depth: {}", depth);
 }
