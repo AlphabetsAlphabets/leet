@@ -19,7 +19,7 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::*;
+    use crate::arrays_and_hashmaps::contains_duplicate;
 
     #[test]
     fn contains_duplicate() {

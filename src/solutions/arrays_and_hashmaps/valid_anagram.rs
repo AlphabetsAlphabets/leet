@@ -26,7 +26,7 @@ pub fn is_anagram(s: String, t: String) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use crate::valid_anagram::*;
+    use crate::arrays_and_hashmaps::valid_anagram::is_anagram;
 
     #[test]
     fn differing_lengths() {

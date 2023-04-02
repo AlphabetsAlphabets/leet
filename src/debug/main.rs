@@ -1,4 +1,4 @@
-use solutions::valid_parenthesis::is_valid;
+use solutions::stack::valid_parenthesis::is_valid;
 
 pub fn main() {
     let parens = "[()]".to_string();

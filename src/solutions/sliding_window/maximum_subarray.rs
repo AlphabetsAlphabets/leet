@@ -19,7 +19,7 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::*;
+    use crate::sliding_window::maximum_subarray;
 
     #[test]
     fn max_sub_array() {
