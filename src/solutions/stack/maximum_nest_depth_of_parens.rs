@@ -3,18 +3,18 @@ pub fn max_depth(s: String) -> i32 {
         return 0;
     }
 
-    let mut depth = 0;
-    let stack: Vec<char> = s.chars().filter(|c| *c == '(' || *c == ')').collect();
-
-    for c in stack {
+    let mut max_depth = 0;
+    let mut current_depth = 0;
+    for c in s.chars() {
         if c == '(' {
-            depth += 1;
+            current_depth += 1;
+            max_depth = std::cmp::max(max_depth, current_depth);
         } else if c == ')' {
-            depth -= 1;
+            current_depth -= 1;
         }
     }
 
-    depth
+    max_depth
 }
 
 #[cfg(test)]
