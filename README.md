@@ -1,5 +1,4 @@
-# Leetcode questions I do in my free time.
-Notes are in issues. I'll use whatever language I feel like cause why not.
+I'll work on algorithm and DS questions in my free time. Notes are in issues. I'll use whatever language I feel like cause why not.
 
 # Completed
 ## Arrays and hashmaps
