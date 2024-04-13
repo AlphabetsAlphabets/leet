@@ -3,9 +3,6 @@
 
 def array_diff(original, to_remove):
     indices = []
-    next = 0
-    count = 0
-
     for element in to_remove:
         repeats = original.count(element)
         while repeats != 0:
