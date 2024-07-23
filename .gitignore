@@ -2,3 +2,8 @@ rust/target
 rust/debug
 rust/Cargo.lock
 py/__pycache__/
+
+*.out
+*.cache
+*.vscode
+*.json
