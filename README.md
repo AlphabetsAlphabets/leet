@@ -1,4 +1,4 @@
-I'll work on algorithm and DS questions in my free time. Notes are in issues. I'll use whatever language I feel like cause why not.
+A compilation of challenges and implementation of data structures. Contains solutions to questions found from all over the place Leetcode, CodeWars, etc.
 
 # Completed
 ## Arrays and hashmaps
