@@ -40,7 +40,18 @@ class Queue {
             return false;
         }
 
-        return queue[front++];
+        int value = queue[front];
+        front++;
+        return value;
+    }
+
+    void showQueue() {
+        std::cout << front << std::endl;
+        for (int i = front; i < rear; i++) {
+            std::cout << queue[i] << " ";
+        }
+
+        std::cout << std::endl;
     }
 };
 
@@ -48,12 +59,13 @@ int main() {
     Queue queue;
     queue.enqueue(1);
     queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(5);
 
     int value = queue.dequeue();
-    std::cout << value << std::endl;
-
     value = queue.dequeue();
-    std::cout << value << std::endl;
+    
+    queue.showQueue();
 
     return 0;
 }
