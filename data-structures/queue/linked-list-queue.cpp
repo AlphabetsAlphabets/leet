@@ -61,6 +61,34 @@ class Queue {
             return value;
         }
 
+        // Moves node at specified index to the front of the queue, pushing everything back.
+        void moveToFront(int index) {
+            if (index == 0) {
+                // do nothing
+                return;
+            }
+
+            Node<T>* current = front;
+            Node<T>* previous;
+
+            for (int i = 0; i < index - 1; i++) {
+                previous = current;
+                // 2 -> 3 -> 4 -> 5
+                current = current->next;
+            }
+
+            // 3 -> 4 -> 5
+            Node<T>* interest = current->next;
+            // 4 -> 5
+            Node<T>* remaining = interest->next;
+            // 2 -> 4 -> 5
+            current->next = remaining;
+            
+            // 3 -> 1 -> 2 -> 4 -> 5
+            interest->next = front;
+            front = interest;
+        }
+
         // Prints the queue. Left most element is the front.
         void printQueue() {
             Node<T>* current = front;
@@ -83,21 +111,15 @@ class Queue {
 
 int main() {
     Queue<int>* queue = new Queue<int>();
-    queue->dequeue();
-
+    
     queue->enqueue(1);
+    queue->enqueue(2);
+    queue->enqueue(3);
+    queue->enqueue(4);
     queue->enqueue(5);
-    queue->enqueue(6);
-    queue->enqueue(7);
 
-    // 1 5 6 7
     queue->printQueue();
-
-    queue->dequeue();
-    queue->dequeue();
-    queue->dequeue();
-
-    // 7
+    queue->moveToFront(1);
     queue->printQueue();
 
     return 0;
