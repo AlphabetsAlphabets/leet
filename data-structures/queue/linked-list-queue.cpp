@@ -78,15 +78,15 @@ class Queue {
             }
 
             // 3 -> 4 -> 5
-            Node<T>* interest = current->next;
+            Node<T>* target = current->next;
             // 4 -> 5
-            Node<T>* remaining = interest->next;
+            Node<T>* remaining = target->next;
             // 2 -> 4 -> 5
             current->next = remaining;
             
             // 3 -> 1 -> 2 -> 4 -> 5
-            interest->next = front;
-            front = interest;
+            target->next = front;
+            front = target;
         }
 
         // Prints the queue. Left most element is the front.
